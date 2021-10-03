@@ -19,7 +19,15 @@ module.exports = (sequelize, DataTypes) => {
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
 		});
-		ChatLog.belongsToMany(models.ChatRoom, {
+		ChatRoom.belongsTo(models.User, {
+			foreignKey: {
+				name: "participantId",
+				allowNull: false,
+			},
+			onDelete: "RESTRICT",
+			onUpdate: "RESTRICT",
+		});
+		ChatRoom.belongsTo(models.Community, {
 			foreignKey: {
 				name: "participantId",
 				allowNull: false,
@@ -29,5 +37,5 @@ module.exports = (sequelize, DataTypes) => {
 		});
 	};
 
-	return;
+	return ChatRoom;
 };

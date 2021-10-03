@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-	const CommunityTag = sequelize.define("CommunityMember", { underscored: true });
+	const CommunityTag = sequelize.define("CommunityTag", {}, { underscored: true });
 
 	CommunityTag.associate = (models) => {
 		CommunityTag.belongsTo(models.Community, {

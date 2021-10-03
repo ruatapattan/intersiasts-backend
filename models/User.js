@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 	User.associate = (models) => {
 		User.hasMany(models.ThreadReply, {
 			foreignKey: {
-				name: "userId",
+				name: "replierId",
 				// allowNull: false,
 			},
 			onDelete: "RESTRICT",
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
 		});
 		User.hasMany(models.ChatLog, {
 			foreignKey: {
-				name: "userId",
+				name: "senderId",
 				// allowNull: false,
 			},
 			onDelete: "RESTRICT",
@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
 		});
 		User.hasMany(models.ChatRoom, {
 			foreignKey: {
-				name: "userId",
+				name: "participantId",
 				// allowNull: false,
 			},
 			onDelete: "RESTRICT",
@@ -58,22 +58,22 @@ module.exports = (sequelize, DataTypes) => {
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
 		});
-		User.belongsToMany(models.Community, {
-			through: "CommunityMember",
-			foreignKey: "userId",
-			otherKey: "userId",
-		});
-		User.hasMany(models.ThreadReply, {
+		// User.belongsToMany(models.Community, {
+		// 	through: "CommunityMember",
+		// 	foreignKey: "userId",
+		// 	otherKey: "userId",
+		// });
+		User.hasMany(models.Thread, {
 			foreignKey: {
-				name: "userId",
+				name: "posterId",
 				// allowNull: false,
 			},
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
 		});
-		User.hasMany(models.Thread, {
+		User.hasMany(models.ThreadLike, {
 			foreignKey: {
-				name: "userId",
+				name: "likerId",
 				// allowNull: false,
 			},
 			onDelete: "RESTRICT",

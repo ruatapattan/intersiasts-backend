@@ -1,7 +1,9 @@
 require("dotenv").config();
-
 const cors = require("cors");
 const express = require("express");
+const { sequelize } = require("./models");
+
+// sequelize.sync({ force: false });
 
 const app = express();
 
@@ -11,6 +13,6 @@ app.use(express.json()); //allows body
 
 const port = process.env.PORT || 8000;
 
-console.log(port);
+// console.log(port);
 
 app.listen(port, () => console.log(`server is running on port ${port}`));

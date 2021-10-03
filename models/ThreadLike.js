@@ -1,26 +1,25 @@
 module.exports = (sequelize, DataTypes) => {
-	const ChatLog = sequelize.define(
-		"ChatLog",
-		{
-			message: {
-				type: DataTypes.STRING,
-			},
-		},
+	const ThreadLike = sequelize.define(
+		"ThreadLike",
+		{},
+
 		{ underscored: true }
 	);
 
-	ChatLog.associate = (models) => {
-		ChatLog.belongsTo(models.ChatRoom, {
+	ThreadLike.associate = (models) => {
+		ThreadLike.belongsTo(models.Thread, {
 			foreignKey: {
-				name: "roomId",
+				name: "threadId",
 				allowNull: false,
 			},
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
 		});
-		ChatLog.belongsTo(models.User, {
+	};
+	ThreadLike.associate = (models) => {
+		ThreadLike.belongsTo(models.User, {
 			foreignKey: {
-				name: "senderId",
+				name: "likerId",
 				allowNull: false,
 			},
 			onDelete: "RESTRICT",
@@ -28,5 +27,5 @@ module.exports = (sequelize, DataTypes) => {
 		});
 	};
 
-	return ChatLog;
+	return ThreadLike;
 };

@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
 		});
+
 		Community.hasMany(models.Thread, {
 			foreignKey: {
 				name: "communityId",
@@ -51,11 +52,6 @@ module.exports = (sequelize, DataTypes) => {
 			},
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
-		});
-		Community.belongsToMany(models.User, {
-			through: "CommunityMember",
-			foreignKey: "communityId",
-			otherKey: "communityId",
 		});
 	};
 

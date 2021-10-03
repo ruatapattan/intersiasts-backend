@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
 	Thread.associate = (models) => {
 		Thread.belongsTo(models.User, {
 			foreignKey: {
-				name: "userId",
+				name: "posterId",
 				allowNull: false,
 			},
 			onDelete: "RESTRICT",
@@ -36,6 +36,14 @@ module.exports = (sequelize, DataTypes) => {
 			onUpdate: "RESTRICT",
 		});
 		Thread.hasMany(models.ThreadReply, {
+			foreignKey: {
+				name: "threadId",
+				// allowNull: false,
+			},
+			onDelete: "RESTRICT",
+			onUpdate: "RESTRICT",
+		});
+		Thread.hasMany(models.ThreadLike, {
 			foreignKey: {
 				name: "threadId",
 				// allowNull: false,
