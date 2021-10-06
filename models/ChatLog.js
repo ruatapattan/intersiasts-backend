@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
 		});
+		ChatLog.belongsToMany(models.Image, { through: "chat_image" });
 	};
 
 	return ChatLog;

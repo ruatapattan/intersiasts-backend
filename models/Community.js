@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
 				allowNull: false,
 			},
 			communityImage: {
-				type: DataTypes.STRING,
-				validate: { isUrl: true },
+				type: DataTypes.JSON,
+				// validate: { isUrl: true },
 			},
 		},
 		{ underscored: true }

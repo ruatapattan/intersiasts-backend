@@ -19,6 +19,15 @@ module.exports = (sequelize, DataTypes) => {
 			},
 			userType: {
 				type: DataTypes.ENUM("user", "admin"),
+				defaultValue: "user",
+				allowNull: false,
+			},
+			profilePic: {
+				type: DataTypes.STRING,
+				validate: { isUrl: true },
+			},
+			birthDate: {
+				type: DataTypes.DATEONLY,
 				allowNull: false,
 			},
 		},
