@@ -1,7 +1,7 @@
 module.exports = (err, req, res, next) => {
 	// console.log("error name is: ", err.name);
 	// console.log("err errors: ", err.errors);
-	console.log("error: ", err);
+	// console.log("error: ", err);
 	let errObj = {
 		// emailChar: "",
 		// emailSame: "",
@@ -12,6 +12,11 @@ module.exports = (err, req, res, next) => {
 	console.log("error is: ", err);
 
 	let code, message, path;
+
+	if (err.storageErrors) {
+		errObj.imageFormat = err.message;
+		errObj.code = 400;
+	}
 
 	//for email validation
 	if (err.name === "SequelizeValidationError" && err.errors[0].validatorName === "isEmail") {
@@ -52,7 +57,7 @@ module.exports = (err, req, res, next) => {
 	// console.log(errObj);
 
 	res.status(errObj.code || 500).send({
-		message: errObj || err.message,
+		message: Object.keys(errObj).length !== 0 ? errObj : err.message,
 		// path: path,
 		// name: err.name,
 	});

@@ -1,5 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
-	const CommunityTag = sequelize.define("CommunityTag", {}, { underscored: true });
+	const CommunityTag = sequelize.define(
+		"CommunityTag",
+		{
+			id: {
+				type: DataTypes.UUID,
+				defaultValue: DataTypes.UUIDV4,
+				primaryKey: true,
+			},
+		},
+		{ underscored: true }
+	);
 
 	CommunityTag.associate = (models) => {
 		CommunityTag.belongsTo(models.Community, {

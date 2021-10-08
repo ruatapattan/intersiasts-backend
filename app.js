@@ -7,7 +7,10 @@ const { sequelize } = require("./models");
 // const fs = require("fs");
 // const util = require("util");
 const authRoute = require("./routes/authRoute");
+const replyRoute = require("./routes/replyRoute");
+const threadRoute = require("./routes/threadRoute");
 const createCommunityRoute = require("./routes/createCommunityRoute");
+const communityRoute = require("./routes/communityRoute");
 const errorController = require("./controllers/errorController");
 
 // sequelize.sync({ alter: true });
@@ -50,9 +53,19 @@ app.use("/public", express.static("public"));
 // 	},
 // });
 
+//ok
 app.use("/createCommunity", createCommunityRoute);
-app.use("/", authRoute);
 
+//createThread ok
+app.use("/community", communityRoute);
+
+app.use("/thread", threadRoute);
+
+app.use("/reply", replyRoute);
+
+// app.use("/community/thread", commentRoute);
+
+app.use("/", authRoute);
 app.use((req, res, next) => {
 	// console.log(err);
 	res.status(404).send({ message: "resource not found on this server" });

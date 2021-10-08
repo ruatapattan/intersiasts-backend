@@ -2,6 +2,11 @@ module.exports = (sequelize, DataTypes) => {
 	const ChatLog = sequelize.define(
 		"ChatLog",
 		{
+			id: {
+				type: DataTypes.UUID,
+				defaultValue: DataTypes.UUIDV4,
+				primaryKey: true,
+			},
 			message: {
 				type: DataTypes.STRING,
 			},
@@ -26,7 +31,14 @@ module.exports = (sequelize, DataTypes) => {
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
 		});
-		ChatLog.belongsToMany(models.Image, { through: "chat_image" });
+		ChatLog.hasMany(models.Image, {
+			foreignKey: {
+				name: "chatLogId",
+				// allowNull: false,
+			},
+			onDelete: "RESTRICT",
+			onUpdate: "RESTRICT",
+		});
 	};
 
 	return ChatLog;

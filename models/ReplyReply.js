@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-	const ThreadReply = sequelize.define(
-		"ThreadReply",
+	const ReplyReply = sequelize.define(
+		"ReplyReply",
 		{
 			id: {
 				type: DataTypes.UUID,
@@ -8,39 +8,31 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 			},
 			content: {
-				type: DataTypes.STRING(5000),
+				type: DataTypes.STRING,
 				allowNull: false,
 			},
 		},
 		{ underscored: true }
 	);
 
-	ThreadReply.associate = (models) => {
-		ThreadReply.belongsTo(models.Thread, {
+	ReplyReply.associate = (models) => {
+		ReplyReply.belongsTo(models.ThreadReply, {
 			foreignKey: {
-				name: "threadId",
+				name: "threadReplyId",
 				allowNull: false,
 			},
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
 		});
-		ThreadReply.hasMany(models.ThreadLike, {
+		ReplyReply.hasMany(models.ThreadLike, {
 			foreignKey: {
-				name: "threadReplyId",
+				name: "replyReplyId",
 				// allowNull: false,
 			},
 			onDelete: "RESTRICT",
 			onUpdate: "RESTRICT",
 		});
-		ThreadReply.hasMany(models.ReplyReply, {
-			foreignKey: {
-				name: "threadReplyId",
-				// allowNull: false,
-			},
-			onDelete: "RESTRICT",
-			onUpdate: "RESTRICT",
-		});
-		ThreadReply.belongsTo(models.User, {
+		ReplyReply.belongsTo(models.User, {
 			foreignKey: {
 				name: "replierId",
 				allowNull: false,
@@ -50,5 +42,5 @@ module.exports = (sequelize, DataTypes) => {
 		});
 	};
 
-	return ThreadReply;
+	return ReplyReply;
 };

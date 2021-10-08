@@ -1,0 +1,96 @@
+{
+	"threadsResult": {
+		"id": "a5e6085e-8266-4923-8eb0-3b75a5bde449",
+		"communityName": "test community",
+		"description": "for testing only",
+		"communityImage": {
+			"public_id": "ypo7gcr59iniblxz9elt",
+			"secure_url": "https://res.cloudinary.com/dbaavttgh/image/upload/v1633580721/ypo7gcr59iniblxz9elt.jpg"
+		},
+		"createdAt": "2021-10-07T04:25:20.000Z",
+		"updatedAt": "2021-10-07T04:25:20.000Z",
+		"Threads": [
+			{
+				"id": "092f5533-2e0f-469e-a076-347bd8074c5f",
+				"title": "testThread",
+				"content": "test desc",
+				"likeCount": 0,
+				"createdAt": "2021-10-07T08:15:18.000Z",
+				"updatedAt": "2021-10-07T08:15:18.000Z",
+				"communityId": "a5e6085e-8266-4923-8eb0-3b75a5bde449",
+				"posterId": "e56d26e6-10cd-431f-b4e2-0b005efe8152"
+			},
+			{
+				"id": "3910c138-e3b5-4024-8500-fb0dd22c0448",
+				"title": "testThread",
+				"content": "test desc",
+				"likeCount": 0,
+				"createdAt": "2021-10-07T08:17:23.000Z",
+				"updatedAt": "2021-10-07T08:17:23.000Z",
+				"communityId": "a5e6085e-8266-4923-8eb0-3b75a5bde449",
+				"posterId": "e56d26e6-10cd-431f-b4e2-0b005efe8152"
+			},
+			{
+				"id": "4eb741aa-ea05-4508-a8af-fbe30b5e5f53",
+				"title": "testThread",
+				"content": "test desc",
+				"likeCount": 0,
+				"createdAt": "2021-10-07T08:16:04.000Z",
+				"updatedAt": "2021-10-07T08:16:04.000Z",
+				"communityId": "a5e6085e-8266-4923-8eb0-3b75a5bde449",
+				"posterId": "e56d26e6-10cd-431f-b4e2-0b005efe8152"
+			},
+			{
+				"id": "5569b0c3-dbb3-413f-8c8b-64d6cda054a6",
+				"title": "testThread",
+				"content": "test desc",
+				"likeCount": 0,
+				"createdAt": "2021-10-07T08:20:35.000Z",
+				"updatedAt": "2021-10-07T08:20:35.000Z",
+				"communityId": "a5e6085e-8266-4923-8eb0-3b75a5bde449",
+				"posterId": "e56d26e6-10cd-431f-b4e2-0b005efe8152"
+			},
+			{
+				"id": "677bba6b-bdd9-4b46-9234-62f6a9556ea5",
+				"title": "demo",
+				"content": "demooooooo",
+				"likeCount": 0,
+				"createdAt": "2021-10-07T08:25:05.000Z",
+				"updatedAt": "2021-10-07T08:25:05.000Z",
+				"communityId": "a5e6085e-8266-4923-8eb0-3b75a5bde449",
+				"posterId": "e56d26e6-10cd-431f-b4e2-0b005efe8152"
+			}
+		],
+		"CommunityTags": [
+			{
+				"id": "b4e8d1f3-de65-4659-9a2d-50bd32a7112e",
+				"createdAt": "2021-10-07T04:25:20.000Z",
+				"updatedAt": "2021-10-07T04:25:20.000Z",
+				"communityId": "a5e6085e-8266-4923-8eb0-3b75a5bde449",
+				"tagId": "7441420a-56f4-47c3-a766-e654060ec11b",
+				"Tag": {
+					"id": "7441420a-56f4-47c3-a766-e654060ec11b",
+					"tagName": "indoor",
+					"createdAt": "2021-10-07T10:50:00.000Z",
+					"updatedAt": "2021-10-07T10:50:00.000Z"
+				}
+			}
+		],
+		"CommunityMembers": [
+			{
+				"memberRole": "owner",
+				"User": {
+					"id": "e56d26e6-10cd-431f-b4e2-0b005efe8152",
+					"username": "jamyboi",
+					"password": "$2a$12$MXppI1lJGp4524C8nt7Otu7T8Bem6gqirWB3GmbM9GXFFeJ0ZkxUy",
+					"email": "jamyboi@gmail.com",
+					"userType": "user",
+					"profilePic": null,
+					"birthDate": "2021-10-13",
+					"createdAt": "2021-10-07T04:05:47.000Z",
+					"updatedAt": "2021-10-07T04:05:47.000Z"
+				}
+			}
+		]
+	}
+}

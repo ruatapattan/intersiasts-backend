@@ -2,6 +2,12 @@ module.exports = (sequelize, DataTypes) => {
 	const ChatRoom = sequelize.define(
 		"ChatRoom",
 		{
+			id: {
+				type: DataTypes.UUID,
+				defaultValue: DataTypes.UUIDV4,
+				primaryKey: true,
+			},
+
 			roomName: {
 				type: DataTypes.STRING,
 				allowNull: false,

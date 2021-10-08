@@ -2,17 +2,35 @@ module.exports = (sequelize, DataTypes) => {
 	const Image = sequelize.define(
 		"Image",
 		{
+			id: {
+				type: DataTypes.UUID,
+				defaultValue: DataTypes.UUIDV4,
+				primaryKey: true,
+			},
 			imageUrl: {
-				type: DataTypes.STRING,
-				validate: { isUrl: true },
+				type: DataTypes.JSON,
 			},
 		},
 		{ underscored: true }
 	);
 
 	Image.associate = (models) => {
-		Image.belongsToMany(models.Thread, { through: "thread_image", underscored: true });
-		Image.belongsToMany(models.ChatLog, { through: "chat_image", underscored: true });
+		Image.belongsTo(models.Thread, {
+			foreignKey: {
+				name: "threadId",
+				// allowNull: false,
+			},
+			onDelete: "RESTRICT",
+			onUpdate: "RESTRICT",
+		});
+		Image.belongsTo(models.ChatLog, {
+			foreignKey: {
+				name: "chatLogId",
+				// allowNull: false,
+			},
+			onDelete: "RESTRICT",
+			onUpdate: "RESTRICT",
+		});
 	};
 
 	return Image;

@@ -2,6 +2,11 @@ module.exports = (sequelize, DataTypes) => {
 	const User = sequelize.define(
 		"User",
 		{
+			id: {
+				type: DataTypes.UUID,
+				defaultValue: DataTypes.UUIDV4,
+				primaryKey: true,
+			},
 			username: {
 				type: DataTypes.STRING,
 				allowNull: false,
@@ -36,6 +41,14 @@ module.exports = (sequelize, DataTypes) => {
 
 	User.associate = (models) => {
 		User.hasMany(models.ThreadReply, {
+			foreignKey: {
+				name: "replierId",
+				// allowNull: false,
+			},
+			onDelete: "RESTRICT",
+			onUpdate: "RESTRICT",
+		});
+		User.hasMany(models.ReplyReply, {
 			foreignKey: {
 				name: "replierId",
 				// allowNull: false,

@@ -2,6 +2,11 @@ module.exports = (sequelize, DataTypes) => {
 	const Community = sequelize.define(
 		"Community",
 		{
+			id: {
+				type: DataTypes.UUID,
+				defaultValue: DataTypes.UUIDV4,
+				primaryKey: true,
+			},
 			communityName: {
 				type: DataTypes.STRING,
 				allowNull: false,

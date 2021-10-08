@@ -18,11 +18,13 @@ exports.registerUser = async (req, res, next) => {
 		const { username, email, password, confirmPassword, birthDate } = req.body;
 
 		if (!userValidate.validateLength(username)) {
+			console.log("**********userLength");
 			errMessage.usernameLength = "username must be 6-12 characters long";
 			hasError = true;
 			// throw new CustomerError("username must be 6-12 characters long", 400, "username");
 		}
 		if (!userValidate.validateCharacter(username)) {
+			console.log("**********userChar");
 			errMessage.usernameChar = "username must consists of alphabets, number, dash, or underscore only";
 			hasError = true;
 			// throw new CustomerError(
@@ -32,17 +34,21 @@ exports.registerUser = async (req, res, next) => {
 			// );
 		}
 		if (password !== confirmPassword) {
+			console.log("**********confpass");
 			errMessage.confirmPassword = "confirm password does not match";
 			hasError = true;
 			// throw new CustomerError("confirm password does not match", 400);
 		}
 		if (!passwordValidate.validateLength(password)) {
+			console.log("**********passlength");
 			errMessage.passwordLength = "password must be at least 8 characters long";
 			hasError = true;
 			// throw new CustomerError("password must be at least 8 characters long", 400, "password");
 		}
 		if (!passwordValidate.validateCharacter(password)) {
-			(errMessage.passwordChar = "password must contain small letter, capitalized letter, and number"),
+			console.log("**********passschar")(
+				(errMessage.passwordChar = "password must contain small letter, capitalized letter, and number")
+			),
 				(hasError = true);
 			// throw new CustomerError(
 			// 	"password must contain small letter, capitalized letter, and number",
@@ -52,8 +58,8 @@ exports.registerUser = async (req, res, next) => {
 		}
 
 		// if (hasError) {
-		if (errMessage) {
-			// console.log(errMessage);
+		if (Object.keys(errMessage).length !== 0) {
+			console.log(errMessage);
 			throw new CustomerError(JSON.stringify(errMessage), 400, "validationErrorObject");
 		}
 		const hashed = await bcrypt.hash(password, 12);
@@ -68,6 +74,7 @@ exports.registerUser = async (req, res, next) => {
 		res.send({ user });
 	} catch (err) {
 		console.dir(err);
+		console.log("regis err: ", err);
 		next(err);
 	}
 };
